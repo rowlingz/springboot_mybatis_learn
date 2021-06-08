@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: mybatis-demo
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/test?charset=utf8&autocommit=true&autoReconnect=true&serverTimezone=GMT%2B8
+    username: root
+    password: root
+    driverClassName: com.mysql.cj.jdbc.Driver
+mybatis:
+  # 配置 mybatis 的configuration 文件位置
+#  config-location: classpath:mybatis/mybatis-config.xml
+  # 配置 mapper 文件的位置
+  mapper-locations: classpath:mapper/*.xml
+  # 配置别名， 默认是类名首字母小写；也可以使用@Alias
+  type-aliases-package: com.rowlingz.mybatis.entity
+  # configuration 配置 config-location 和 configuration 不能同时配置
+  configuration:
+    # 下划线转大写映射实体类字段
+    map-underscore-to-camel-case: true

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+
+<generatorConfiguration>
+    <!--    &lt;!&ndash; 引入配置文件 &ndash;&gt;-->
+    <properties resource="application.yml"/>
+    <!-- 指定数据连接驱动jar地址 -->
+    <classPathEntry location="/Users/zhouning/.m2/repository/mysql/mysql-connector-java/8.0.15/mysql-connector-java-8.0.15.jar" />
+
+    <!-- 一个数据库一个context -->
+    <context id="ingtube_data">
+        <!-- 注释 -->
+        <commentGenerator >
+            <property name="suppressAllComments" value="true"/><!-- 是否取消注释 -->
+            <property name="suppressDate" value="true" /> <!-- 是否生成注释代时间戳-->
+        </commentGenerator>
+
+        <!-- jdbc连接 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/test?charset=utf8&quot;autocommit=true&quot;autoReconnect=true"
+                        userId="root"
+                        password="root" />
+
+        <!-- 类型转换 -->
+        <javaTypeResolver>
+            <!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） -->
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 生成实体类地址 -->
+        <javaModelGenerator targetPackage="com.rowlingz.mybatis.entity"
+                            targetProject="src/main/java" >
+            <!-- 是否在当前路径下新加一层schema,eg：fase路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] -->
+            <property name="enableSubPackages" value="false"/>
+            <!-- 是否针对string类型的字段在set的时候进行trim调用 -->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- 生成mapxml文件 -->
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="src/main/resources" >
+            <!-- 是否在当前路径下新加一层schema,eg：fase路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] -->
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!-- 生成mapxml对应client，也就是接口dao -->
+        <javaClientGenerator targetPackage="com.rowlingz.mybatis.mapper"
+                             targetProject="src/main/java" type="MAPPER" >
+            <!-- 是否在当前路径下新加一层schema,eg：fase路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] -->
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+
+        <!--         配置表信息-->
+        <table tableName="production_tag_feedback_calcu" domainObjectName=""
+               enableCountByExample="false" enableSelectByPrimaryKey="false" enableDeleteByPrimaryKey="false"
+               enableUpdateByPrimaryKey="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false"
+        >
+            <!-- 忽略列，不生成bean 字段 -->
+            <ignoreColumn column="id" />
+            <ignoreColumn column="create_time" />
+            <ignoreColumn column="update_time" />
+        </table>
+
+    </context>
+</generatorConfiguration>
