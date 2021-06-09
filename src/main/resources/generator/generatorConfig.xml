@@ -9,6 +9,10 @@
 
     <!-- 一个数据库一个context -->
     <context id="ingtube_data">
+
+        <!--生成mapper.xml时覆盖原文件-->
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"/>
+
         <!-- 注释 -->
         <commentGenerator >
             <property name="suppressAllComments" value="true"/><!-- 是否取消注释 -->
@@ -61,6 +65,9 @@
             <ignoreColumn column="create_time" />
             <ignoreColumn column="update_time" />
         </table>
-
+        <table tableName="star_rqeust_detail"
+               enableCountByExample="false" enableSelectByPrimaryKey="false" enableDeleteByPrimaryKey="false"
+               enableUpdateByPrimaryKey="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false"/>
     </context>
 </generatorConfiguration>

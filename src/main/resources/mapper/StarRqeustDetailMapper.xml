@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rowlingz.mybatis.mapper.StarRqeustDetailMapper">
+  <insert id="insert" parameterType="com.rowlingz.mybatis.entity.StarRqeustDetail">
+    insert into star_rqeust_detail (index, cp_id, log_time
+      )
+    values (#{index,jdbcType=BIGINT}, #{cpId,jdbcType=BIGINT}, #{logTime,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.rowlingz.mybatis.entity.StarRqeustDetail">
+    insert into star_rqeust_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="index != null">
+        index,
+      </if>
+      <if test="cpId != null">
+        cp_id,
+      </if>
+      <if test="logTime != null">
+        log_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="index != null">
+        #{index,jdbcType=BIGINT},
+      </if>
+      <if test="cpId != null">
+        #{cpId,jdbcType=BIGINT},
+      </if>
+      <if test="logTime != null">
+        #{logTime,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>
